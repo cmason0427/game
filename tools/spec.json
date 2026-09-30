@@ -286,5 +286,9 @@
     "y": 225
    }
   }
+ },
+ "mirror": {
+  "charlie": true,
+  "parker": false
  }
 }

@@ -21,7 +21,7 @@ Needs Pillow. Reads tools/spec.json (made by mannequins.mts).
 
 import json, math, os, re, sys
 from collections import Counter, deque
-from PIL import Image
+from PIL import Image, ImageOps
 
 ROOT = os.path.join(os.path.dirname(__file__), "..", "..")
 SPEC = json.load(open(os.path.join(os.path.dirname(__file__), "spec.json")))
@@ -106,8 +106,25 @@ def save_manifest(path, update):
     json.dump(data, open(path, "w"), indent=1, sort_keys=True)
 
 
+MIRROR = SPEC.get("mirror", {})
+
+
+def flip_if(im, person):
+    """People marked `mirror` get everything flipped (see avatarSpec.ts)."""
+    return ImageOps.mirror(im) if MIRROR.get(person) else im
+
+
+def game_landmarks(person):
+    """Landmarks as they are in the game (mirrored + _L/_R swapped for mirrored people)."""
+    lm = SPEC["landmarks"][person]
+    if not MIRROR.get(person):
+        return lm
+    swap = lambda k: k[:-2] + ("_R" if k.endswith("_L") else "_L") if k[-2:] in ("_L", "_R") else k
+    return {swap(k): {"x": GW - 1 - v["x"], "y": v["y"]} for k, v in lm.items()}
+
+
 def avatar(path, person):
-    im = snap(path)
+    im = flip_if(snap(path), person)
     key(im, is_magenta)
     drop_specks(im)
     bbox = im.getbbox()
@@ -135,7 +152,7 @@ def seg_dist(p, a, b):
 
 
 def bones(person):
-    lm = SPEC["landmarks"][person]
+    lm = game_landmarks(person)
     out = []
     for piece in SPEC["pieces"]:
         for side in ("_L", "_R") if piece.get("side") else ("",):
@@ -147,7 +164,7 @@ def bones(person):
 
 
 def fitting(path, person, tier):
-    im = snap(path)
+    im = flip_if(snap(path), person)
     key(im, is_magenta)
     key(im, is_fit_body)
     drop_specks(im, 6)

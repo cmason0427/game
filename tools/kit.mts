@@ -9,7 +9,7 @@ import { ARMOR_RULES, fittingPrompt, sheetPrompt, SHEETS, STYLE_SHEET_PROMPT, TI
 
 // Keep tools/spec.json (read by the Python tools) in step with the TS specs.
 const spec = existsSync("tools/spec.json") ? JSON.parse(readFileSync("tools/spec.json", "utf8")) : {};
-Object.assign(spec, { grid: [GRID_W, GRID_H], block: BLOCK, floorY: FLOOR_Y, pieces: PIECES, tiers: TIERS.map((t) => t.key), sheets: SHEETS });
+Object.assign(spec, { mirror: Object.fromEntries(Object.entries(PEOPLE).map(([k, p]) => [k, p.mirror])), grid: [GRID_W, GRID_H], block: BLOCK, floorY: FLOOR_Y, pieces: PIECES, tiers: TIERS.map((t) => t.key), sheets: SHEETS });
 writeFileSync("tools/spec.json", JSON.stringify(spec, null, 1));
 const LM = spec.landmarks as Record<"charlie" | "parker", Landmarks>;
 for (const who of ["charlie", "parker"] as const)
@@ -17,6 +17,13 @@ for (const who of ["charlie", "parker"] as const)
     console.error(`No mannequin for ${who} yet: run tools/import_mannequin.py first.`);
     process.exit(1);
   }
+// The game's own landmark file: mirrored people get their landmarks flipped and _L/_R swapped.
+const flip = (lm: Landmarks) =>
+  Object.fromEntries(Object.entries(lm).map(([k, p]) => [k.replace(/_L$/, "_X").replace(/_R$/, "_L").replace(/_X$/, "_R"), { x: GRID_W - 1 - p.x, y: p.y }]));
+writeFileSync(
+  "public/mannequins/landmarks.json",
+  JSON.stringify({ charlie: PEOPLE.charlie.mirror ? flip(LM.charlie) : LM.charlie, parker: PEOPLE.parker.mirror ? flip(LM.parker) : LM.parker }, null, 1),
+);
 const box = (s: string) => "```text\n" + s + "\n```";
 const fit = (who: "charlie" | "parker") =>
   TIERS.map((t) => `#### ${PEOPLE[who].name} · ${t.name}\nAttach \`fitting-${who}.png\` **first**, then the style sheet. Save as **${who}-${t.key}.png**.\n\n${box(fittingPrompt(PEOPLE[who], LM[who], who, t))}`).join("\n\n");

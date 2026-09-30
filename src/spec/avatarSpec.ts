@@ -23,10 +23,32 @@ export interface Person {
   name: string;
   heightIn: number;
   build: Build;
+  /**
+   * Flip everything ChatGPT makes for this person before the game uses it.
+   * Charlie: ChatGPT keeps putting her vine tattoo on the wrong side, so we let it
+   * and mirror her whole set (avatar, armor) at import. Her in-game pose is the
+   * mirror of the mannequin ChatGPT sees.
+   */
+  mirror: boolean;
+  /** Tattoo placement said in image terms (viewer's left/right), which ChatGPT follows better than body sides. */
+  tattoos: string;
 }
 export const PEOPLE: Record<"charlie" | "parker", Person> = {
-  charlie: { name: "Charlie", heightIn: 61, build: "curvy" },
-  parker: { name: "Parker", heightIn: 70, build: "muscular" },
+  charlie: {
+    name: "Charlie",
+    heightIn: 61,
+    build: "curvy",
+    mirror: true,
+    tattoos: "Black vine tattoo from the side of the waist down the outer hip and thigh, on the LEFT side of the image (viewer's left).",
+  },
+  parker: {
+    name: "Parker",
+    heightIn: 70,
+    build: "muscular",
+    mirror: false,
+    tattoos:
+      "His tattooed arm (full sleeve) and his big thigh piece are BOTH on the RIGHT side of the image (viewer's right), his own left side. Only a few small tattoos on the other forearm and lower leg.",
+  },
 };
 
 export type P = { x: number; y: number };
@@ -58,6 +80,8 @@ Top of head at y ${landmarks.HEAD_TOP.y}; soles on y ${FLOOR_Y - 1}. Height ${he
 Landmarks (game pixels, x left→right, y top→bottom; _L/_R = ${person.name}'s own left/right, and their left is on the viewer's right):
 ${lm}
 Hair, clothes and shoes may go up to 4 px past the mannequin's edge. Nothing else goes outside it.
+
+Tattoos: ${person.tattoos}
 ${notes.trim() ? `\nExtra notes: ${notes.trim()}\n` : ""}
 Then give the JSON block.`;
 }

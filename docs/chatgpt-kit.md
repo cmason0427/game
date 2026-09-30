@@ -98,6 +98,8 @@ Landmarks (game pixels, x left→right, y top→bottom; _L/_R = Charlie's own le
 HEAD_TOP (128, 128), CHIN (128, 160), SHOULDER_R (106, 176), SHOULDER_L (147, 176), WAIST_R (115, 212), WAIST_L (143, 212), WAIST_C (129, 212), HIP_R (97, 243), HIP_L (149, 243), HIP_C (123, 243), KNEE_R (113, 297), KNEE_L (153, 297), ANKLE_R (119, 347), ANKLE_L (170, 347), FLOOR_R (120, 371), FLOOR_L (171, 371), ELBOW_R (84, 199), WRIST_R (100, 215), ELBOW_L (153, 221), WRIST_L (162, 250)
 Hair, clothes and shoes may go up to 4 px past the mannequin's edge. Nothing else goes outside it.
 
+Tattoos: Black vine tattoo from the side of the waist down the outer hip and thigh, on the LEFT side of the image (viewer's left).
+
 Then give the JSON block.
 ```
 
@@ -116,6 +118,8 @@ Top of head at y 92; soles on y 371. Height 280 px (4 px per inch).
 Landmarks (game pixels, x left→right, y top→bottom; _L/_R = Parker's own left/right, and their left is on the viewer's right):
 HEAD_TOP (128, 92), CHIN (128, 125), SHOULDER_R (106, 142), SHOULDER_L (154, 142), WAIST_R (100, 197), WAIST_L (137, 197), WAIST_C (118, 197), HIP_R (90, 234), HIP_L (147, 234), HIP_C (118, 234), KNEE_R (112, 293), KNEE_L (157, 293), ANKLE_R (117, 342), ANKLE_L (172, 345), FLOOR_R (110, 356), FLOOR_L (172, 370), ELBOW_R (87, 198), WRIST_R (76, 220), ELBOW_L (165, 197), WRIST_L (164, 225)
 Hair, clothes and shoes may go up to 4 px past the mannequin's edge. Nothing else goes outside it.
+
+Tattoos: His tattooed arm (full sleeve) and his big thigh piece are BOTH on the RIGHT side of the image (viewer's right), his own left side. Only a few small tattoos on the other forearm and lower leg.
 
 Then give the JSON block.
 ```
