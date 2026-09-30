@@ -111,7 +111,7 @@ def to_grid(im, mask, who):
             if mp[x, y] and 0 <= gx < GW and 0 <= gy < GH:
                 grid[gy][gx] = True
                 dark[gy][gx] = lp[x, y] < med * 0.55  # keep ChatGPT's interior contour lines
-    return grid, dark
+    return grid, dark, (bbox, s, ox, oy)
 
 
 def runs(row):
@@ -158,7 +158,21 @@ def measure(grid):
     rs.sort()
     gx = (rs[0][1] + rs[1][0]) // 2 if len(rs) == 2 else cx
     cy = ky
-    while cy > at(0.35) and not grid[cy][gx]:
+    # Walk up the gap between the legs, re-centring on it each row (legs can be angled).
+    while cy > at(0.35):
+        row = grid[cy]
+        if row[gx]:
+            near = [x for x in range(gx - 3, gx + 4) if 0 <= x < GW and not row[x]]
+            if not near:
+                break
+            gx = min(near, key=lambda x: abs(x - gx))
+        l = r = gx
+        while l > 0 and not row[l - 1]:
+            l -= 1
+        while r < GW - 1 and not row[r + 1]:
+            r += 1
+        if r - l < 0.15 * H:
+            gx = (l + r) // 2
         cy -= 1
     crotch = cy
 
@@ -174,12 +188,11 @@ def measure(grid):
 
     # Legs: the two runs either side of the crotch gap.
     def legs(y):
-        rs = R(y)
-        left = [r for r in rs if r[1] < gx + 2]
-        right = [r for r in rs if r[0] > gx - 2]
-        L = max(left, key=lambda r: r[1]) if left else None
-        Rr = min(right, key=lambda r: r[0]) if right else None
-        return L, Rr
+        """The two runs nearest the body's axis at this row, left then right."""
+        axis = (cx + gx) / 2
+        rs = sorted((r for r in R(y) if width(r) >= 3), key=lambda r: abs((r[0] + r[1]) / 2 - axis))[:2]
+        rs.sort()
+        return (rs[0], rs[1]) if len(rs) == 2 else (rs[0], rs[0])
 
     mid = lambda r: (r[0] + r[1]) // 2
     kn = crotch + round(0.42 * (bot - crotch))
@@ -219,6 +232,28 @@ def measure(grid):
     return {k: {"x": int(v[0]), "y": int(v[1])} for k, v in lm.items()}
 
 
+def hires(im, mask, place, fill_fn):
+    """The original ChatGPT art, scaled and placed exactly like the grid version, at full size.
+    Keeps its interior lines (ChatGPT paints better over detail); colours pass through fill_fn."""
+    bbox, s, ox, oy = place
+    W4, H4 = round((bbox[2] - bbox[0]) * s * BLOCK), round((bbox[3] - bbox[1]) * s * BLOCK)
+    art = im.crop(bbox).resize((W4, H4), Image.LANCZOS)
+    m = mask.crop(bbox).resize((W4, H4), Image.LANCZOS).point(lambda v: 255 if v >= 128 else 0)
+    ap, mp = art.load(), m.load()
+    lum = sorted(sum(ap[x, y]) / 3 for y in range(0, H4, 3) for x in range(0, W4, 3) if mp[x, y])
+    med = lum[len(lum) // 2]
+    out = Image.new("RGB", (GW * BLOCK, GH * BLOCK), KEY)
+    op = out.load()
+    for y in range(H4):
+        for x in range(W4):
+            X, Y = x + ox * BLOCK, y + oy * BLOCK
+            if mp[x, y] and 0 <= X < GW * BLOCK and 0 <= Y < GH * BLOCK:
+                r, g, b = ap[x, y]
+                pink = r > g + 50 and b > g + 50  # background fringe on the outline
+                op[X, Y] = fill_fn(True if pink else (r + g + b) / 3 < med * 0.6, (r, g, b))
+    return out
+
+
 def paint(grid, dark, fill, line, bg):
     im = Image.new("RGB", (GW * BLOCK, GH * BLOCK), bg)
     d = ImageDraw.Draw(im)
@@ -238,7 +273,7 @@ def main(path, who):
         im.thumbnail((1600, 1600))
     mask, bg = background_mask(im)
     mask = keep_big_blobs(mask)
-    grid, dark = to_grid(im, mask, who)
+    grid, dark, place = to_grid(im, mask, who)
     try:
         lm = measure(grid)
     except Exception as e:  # unusual poses can defeat the auto-measure; fixes fill the gaps
@@ -250,9 +285,11 @@ def main(path, who):
             lm[k] = {"x": v[0], "y": v[1]}
     out = os.path.join(ROOT, "public/mannequins")
     os.makedirs(out, exist_ok=True)
-    paint(grid, dark, GREY, GREY_LINE, KEY).save(f"{out}/mannequin-{who}.png", optimize=True)
-    paint(grid, dark, CYAN, CYAN_LINE, KEY).save(f"{out}/fitting-{who}.png", optimize=True)
-    check = paint(grid, dark, GREY, GREY_LINE, (244, 239, 230))
+    grey = hires(im, mask, place, lambda line, c: GREY_LINE if line else c)
+    grey.save(f"{out}/mannequin-{who}.png", optimize=True)
+    hires(im, mask, place, lambda line, c: CYAN_LINE if line else CYAN).save(f"{out}/fitting-{who}.png", optimize=True)
+    paint(grid, dark, GREY, GREY_LINE, KEY).save(f"{out}/grid-{who}.png", optimize=True)  # the pixel version
+    check = grey.copy()
     d = ImageDraw.Draw(check)
     for k, p in lm.items():
         x, y = p["x"] * BLOCK, p["y"] * BLOCK
