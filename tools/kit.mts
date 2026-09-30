@@ -19,7 +19,7 @@ for (const who of ["charlie", "parker"] as const)
   }
 const box = (s: string) => "```text\n" + s + "\n```";
 const fit = (who: "charlie" | "parker") =>
-  TIERS.map((t) => `#### ${PEOPLE[who].name} · ${t.name}\nAttach \`public/mannequins/fitting-${who}.png\` + the style sheet. Save as **${who}-${t.key}.png**.\n\n${box(fittingPrompt(PEOPLE[who], LM[who], who, t))}`).join("\n\n");
+  TIERS.map((t) => `#### ${PEOPLE[who].name} · ${t.name}\nAttach \`fitting-${who}.png\` **first**, then the style sheet. Save as **${who}-${t.key}.png**.\n\n${box(fittingPrompt(PEOPLE[who], LM[who], who, t))}`).join("\n\n");
 
 const md = `# ChatGPT kit: avatars, armor, items
 
@@ -41,8 +41,9 @@ ${box(PROJECT_INSTRUCTIONS + "\n\n" + ARMOR_RULES)}
 ${box(STYLE_SHEET_PROMPT)}
 
 ## 1. Avatars
-New chat each time. Attach 1–3 clear full-body photos (arms and legs visible so the tattoos show)
-and the person's mannequin. Save as **charlie-avatar.png** / **parker-avatar.png**, and copy the
+New chat each time. Attach the person's **mannequin first** (so it's image 1), then 1–3 clear full-body
+photos (arms and legs visible so the tattoos show). Every result goes through my fit check: about 85%+ is kept,
+anything lower gets rerolled. Save as **charlie-avatar.png** / **parker-avatar.png**, and copy the
 JSON block it gives you into a note for me.
 
 ### Charlie

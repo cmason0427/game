@@ -45,14 +45,13 @@ export function avatarPrompt(person: Person, landmarks: Landmarks, notes = "") {
   const lm = Object.entries(landmarks)
     .map(([k, p]) => `${k} (${p.x}, ${p.y})`)
     .join(", ");
-  return `Make ${person.name}'s game avatar. Follow the project's avatar rules exactly.
+  return `EDIT image 1 (${person.name}'s grey mannequin). Do NOT draw a new picture: keep image 1's exact canvas, figure size, position, pose and body outline, and only paint over it. Follow the project's avatar rules exactly.
 
 Person: ${person.name}, ${feetInches(person.heightIn)} tall.
-Attached: photo(s) of ${person.name}, and ${person.name}'s mannequin template.
+Image 1: the mannequin (the canvas to edit). Images 2+: photos of ${person.name}, used ONLY for face, hair, skin tone, eye colour, facial hair, tattoos, piercings, freckles.
 
-Body and pose: LOCKED. They come only from the mannequin. Never change body shape, size, proportions, muscle, curves or pose, even if the photo shows a different build or pose.
-From the photo take ONLY: face, hair, skin tone, eye colour, facial hair, glasses, tattoos, piercings, freckles.
-Paint ${person.name} directly over the gray mannequin: same silhouette, same pose, same position, same size. Don't move, rescale, or re-pose it.
+Body and pose: LOCKED to image 1. Never change body shape, size, proportions, muscle, curves or pose, even if the photos show a different build or pose. Where the mannequin has a hand on the hip, keep the hand on the hip. Where it's turned 3/4, keep it turned.
+The finished figure must sit exactly on top of the mannequin: same silhouette, same position, same size. Hair may add volume; nothing else may move.
 
 Grid: ${GRID_W}×${GRID_H} game pixels, each an exact ${BLOCK}×${BLOCK} block → ${IMAGE_W}×${IMAGE_H} image.
 Top of head at y ${landmarks.HEAD_TOP.y}; soles on y ${FLOOR_Y - 1}. Height ${heightPx(person)} px (${PX_PER_INCH} px per inch).
@@ -65,6 +64,9 @@ Then give the JSON block.`;
 
 /** Paste once into a ChatGPT Project's instructions so every run follows the same rules. */
 export const PROJECT_INSTRUCTIONS = `You make player avatars for a private RPG. Think high-quality modern pixel-art character sprites (polished 16/32-bit era, like a well-made indie RPG), not chunky retro arcade.
+
+HOW TO WORK
+- Always EDIT the attached mannequin or fitting image (image 1). Never generate a fresh composition. Keep its canvas, figure size and position exactly.
 
 STYLE
 - Real pixel art on an exact grid: every game pixel is a solid square block of the size given in the prompt. No anti-aliasing, no blur, no gradients, no painterly texture.

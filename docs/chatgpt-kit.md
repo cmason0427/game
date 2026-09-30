@@ -15,6 +15,9 @@ downloaded PNGs, **not screenshots**), named as listed, and I'll slice and line 
 ```text
 You make player avatars for a private RPG. Think high-quality modern pixel-art character sprites (polished 16/32-bit era, like a well-made indie RPG), not chunky retro arcade.
 
+HOW TO WORK
+- Always EDIT the attached mannequin or fitting image (image 1). Never generate a fresh composition. Keep its canvas, figure size and position exactly.
+
 STYLE
 - Real pixel art on an exact grid: every game pixel is a solid square block of the size given in the prompt. No anti-aliasing, no blur, no gradients, no painterly texture.
 - Detailed and flattering: clean 1-px dark outline, soft cel shading with 3–4 tone ramps per colour, highlights on hair and skin, up to 64 colours total.
@@ -74,20 +77,20 @@ Polished modern pixel art (good indie RPG), not chunky retro arcade.
 ```
 
 ## 1. Avatars
-New chat each time. Attach 1–3 clear full-body photos (arms and legs visible so the tattoos show)
-and the person's mannequin. Save as **charlie-avatar.png** / **parker-avatar.png**, and copy the
+New chat each time. Attach the person's **mannequin first** (so it's image 1), then 1–3 clear full-body
+photos (arms and legs visible so the tattoos show). Every result goes through my fit check: about 85%+ is kept,
+anything lower gets rerolled. Save as **charlie-avatar.png** / **parker-avatar.png**, and copy the
 JSON block it gives you into a note for me.
 
 ### Charlie
 ```text
-Make Charlie's game avatar. Follow the project's avatar rules exactly.
+EDIT image 1 (Charlie's grey mannequin). Do NOT draw a new picture: keep image 1's exact canvas, figure size, position, pose and body outline, and only paint over it. Follow the project's avatar rules exactly.
 
 Person: Charlie, 5'1" tall.
-Attached: photo(s) of Charlie, and Charlie's mannequin template.
+Image 1: the mannequin (the canvas to edit). Images 2+: photos of Charlie, used ONLY for face, hair, skin tone, eye colour, facial hair, tattoos, piercings, freckles.
 
-Body and pose: LOCKED. They come only from the mannequin. Never change body shape, size, proportions, muscle, curves or pose, even if the photo shows a different build or pose.
-From the photo take ONLY: face, hair, skin tone, eye colour, facial hair, glasses, tattoos, piercings, freckles.
-Paint Charlie directly over the gray mannequin: same silhouette, same pose, same position, same size. Don't move, rescale, or re-pose it.
+Body and pose: LOCKED to image 1. Never change body shape, size, proportions, muscle, curves or pose, even if the photos show a different build or pose. Where the mannequin has a hand on the hip, keep the hand on the hip. Where it's turned 3/4, keep it turned.
+The finished figure must sit exactly on top of the mannequin: same silhouette, same position, same size. Hair may add volume; nothing else may move.
 
 Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536 image.
 Top of head at y 128; soles on y 371. Height 244 px (4 px per inch).
@@ -100,14 +103,13 @@ Then give the JSON block.
 
 ### Parker
 ```text
-Make Parker's game avatar. Follow the project's avatar rules exactly.
+EDIT image 1 (Parker's grey mannequin). Do NOT draw a new picture: keep image 1's exact canvas, figure size, position, pose and body outline, and only paint over it. Follow the project's avatar rules exactly.
 
 Person: Parker, 5'10" tall.
-Attached: photo(s) of Parker, and Parker's mannequin template.
+Image 1: the mannequin (the canvas to edit). Images 2+: photos of Parker, used ONLY for face, hair, skin tone, eye colour, facial hair, tattoos, piercings, freckles.
 
-Body and pose: LOCKED. They come only from the mannequin. Never change body shape, size, proportions, muscle, curves or pose, even if the photo shows a different build or pose.
-From the photo take ONLY: face, hair, skin tone, eye colour, facial hair, glasses, tattoos, piercings, freckles.
-Paint Parker directly over the gray mannequin: same silhouette, same pose, same position, same size. Don't move, rescale, or re-pose it.
+Body and pose: LOCKED to image 1. Never change body shape, size, proportions, muscle, curves or pose, even if the photos show a different build or pose. Where the mannequin has a hand on the hip, keep the hand on the hip. Where it's turned 3/4, keep it turned.
+The finished figure must sit exactly on top of the mannequin: same silhouette, same position, same size. Hair may add volume; nothing else may move.
 
 Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536 image.
 Top of head at y 92; soles on y 371. Height 280 px (4 px per inch).
@@ -124,12 +126,12 @@ can check the fit before you do the rest.
 
 ### Charlie (rose gold)
 #### Charlie · Leather
-Attach `public/mannequins/fitting-charlie.png` + the style sheet. Save as **charlie-leather.png**.
+Attach `fitting-charlie.png` **first**, then the style sheet. Save as **charlie-leather.png**.
 
 ```text
-Armor fitting: Charlie's Leather set. Follow the project's armor rules exactly.
+Armor fitting: Charlie's Leather set. EDIT image 1 (the cyan fitting mannequin). Do NOT draw a new picture: keep its exact canvas, figure size, position and pose. Follow the project's armor rules exactly.
 
-Attached: Charlie's CYAN fitting mannequin (and the style sheet).
+Image 1: Charlie's CYAN fitting mannequin. Image 2: the style sheet (reference only).
 Paint a full Leather armor set directly onto the cyan mannequin: helm, pauldrons, chest, bracers/gauntlets, belt, thigh plates, greaves, boots.
 Leave every bit of body NOT covered by armor exactly flat cyan #00ffff with its #007a7a outline. Don't draw skin, face, hair or clothes. Background stays flat #ff00ff.
 Don't move, rescale, or re-pose anything. Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536.
@@ -142,12 +144,12 @@ Armor may stand up to 6 px off the body (pauldrons, helm crest), but no capes, w
 ```
 
 #### Charlie · Stone
-Attach `public/mannequins/fitting-charlie.png` + the style sheet. Save as **charlie-stone.png**.
+Attach `fitting-charlie.png` **first**, then the style sheet. Save as **charlie-stone.png**.
 
 ```text
-Armor fitting: Charlie's Stone set. Follow the project's armor rules exactly.
+Armor fitting: Charlie's Stone set. EDIT image 1 (the cyan fitting mannequin). Do NOT draw a new picture: keep its exact canvas, figure size, position and pose. Follow the project's armor rules exactly.
 
-Attached: Charlie's CYAN fitting mannequin (and the style sheet).
+Image 1: Charlie's CYAN fitting mannequin. Image 2: the style sheet (reference only).
 Paint a full Stone armor set directly onto the cyan mannequin: helm, pauldrons, chest, bracers/gauntlets, belt, thigh plates, greaves, boots.
 Leave every bit of body NOT covered by armor exactly flat cyan #00ffff with its #007a7a outline. Don't draw skin, face, hair or clothes. Background stays flat #ff00ff.
 Don't move, rescale, or re-pose anything. Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536.
@@ -160,12 +162,12 @@ Armor may stand up to 6 px off the body (pauldrons, helm crest), but no capes, w
 ```
 
 #### Charlie · Iron
-Attach `public/mannequins/fitting-charlie.png` + the style sheet. Save as **charlie-iron.png**.
+Attach `fitting-charlie.png` **first**, then the style sheet. Save as **charlie-iron.png**.
 
 ```text
-Armor fitting: Charlie's Iron set. Follow the project's armor rules exactly.
+Armor fitting: Charlie's Iron set. EDIT image 1 (the cyan fitting mannequin). Do NOT draw a new picture: keep its exact canvas, figure size, position and pose. Follow the project's armor rules exactly.
 
-Attached: Charlie's CYAN fitting mannequin (and the style sheet).
+Image 1: Charlie's CYAN fitting mannequin. Image 2: the style sheet (reference only).
 Paint a full Iron armor set directly onto the cyan mannequin: helm, pauldrons, chest, bracers/gauntlets, belt, thigh plates, greaves, boots.
 Leave every bit of body NOT covered by armor exactly flat cyan #00ffff with its #007a7a outline. Don't draw skin, face, hair or clothes. Background stays flat #ff00ff.
 Don't move, rescale, or re-pose anything. Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536.
@@ -178,12 +180,12 @@ Armor may stand up to 6 px off the body (pauldrons, helm crest), but no capes, w
 ```
 
 #### Charlie · Gold
-Attach `public/mannequins/fitting-charlie.png` + the style sheet. Save as **charlie-gold.png**.
+Attach `fitting-charlie.png` **first**, then the style sheet. Save as **charlie-gold.png**.
 
 ```text
-Armor fitting: Charlie's Gold set. Follow the project's armor rules exactly.
+Armor fitting: Charlie's Gold set. EDIT image 1 (the cyan fitting mannequin). Do NOT draw a new picture: keep its exact canvas, figure size, position and pose. Follow the project's armor rules exactly.
 
-Attached: Charlie's CYAN fitting mannequin (and the style sheet).
+Image 1: Charlie's CYAN fitting mannequin. Image 2: the style sheet (reference only).
 Paint a full Gold armor set directly onto the cyan mannequin: helm, pauldrons, chest, bracers/gauntlets, belt, thigh plates, greaves, boots.
 Leave every bit of body NOT covered by armor exactly flat cyan #00ffff with its #007a7a outline. Don't draw skin, face, hair or clothes. Background stays flat #ff00ff.
 Don't move, rescale, or re-pose anything. Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536.
@@ -196,12 +198,12 @@ Armor may stand up to 6 px off the body (pauldrons, helm crest), but no capes, w
 ```
 
 #### Charlie · Crystal
-Attach `public/mannequins/fitting-charlie.png` + the style sheet. Save as **charlie-crystal.png**.
+Attach `fitting-charlie.png` **first**, then the style sheet. Save as **charlie-crystal.png**.
 
 ```text
-Armor fitting: Charlie's Crystal set. Follow the project's armor rules exactly.
+Armor fitting: Charlie's Crystal set. EDIT image 1 (the cyan fitting mannequin). Do NOT draw a new picture: keep its exact canvas, figure size, position and pose. Follow the project's armor rules exactly.
 
-Attached: Charlie's CYAN fitting mannequin (and the style sheet).
+Image 1: Charlie's CYAN fitting mannequin. Image 2: the style sheet (reference only).
 Paint a full Crystal armor set directly onto the cyan mannequin: helm, pauldrons, chest, bracers/gauntlets, belt, thigh plates, greaves, boots.
 Leave every bit of body NOT covered by armor exactly flat cyan #00ffff with its #007a7a outline. Don't draw skin, face, hair or clothes. Background stays flat #ff00ff.
 Don't move, rescale, or re-pose anything. Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536.
@@ -214,12 +216,12 @@ Armor may stand up to 6 px off the body (pauldrons, helm crest), but no capes, w
 ```
 
 #### Charlie · Obsidian
-Attach `public/mannequins/fitting-charlie.png` + the style sheet. Save as **charlie-obsidian.png**.
+Attach `fitting-charlie.png` **first**, then the style sheet. Save as **charlie-obsidian.png**.
 
 ```text
-Armor fitting: Charlie's Obsidian set. Follow the project's armor rules exactly.
+Armor fitting: Charlie's Obsidian set. EDIT image 1 (the cyan fitting mannequin). Do NOT draw a new picture: keep its exact canvas, figure size, position and pose. Follow the project's armor rules exactly.
 
-Attached: Charlie's CYAN fitting mannequin (and the style sheet).
+Image 1: Charlie's CYAN fitting mannequin. Image 2: the style sheet (reference only).
 Paint a full Obsidian armor set directly onto the cyan mannequin: helm, pauldrons, chest, bracers/gauntlets, belt, thigh plates, greaves, boots.
 Leave every bit of body NOT covered by armor exactly flat cyan #00ffff with its #007a7a outline. Don't draw skin, face, hair or clothes. Background stays flat #ff00ff.
 Don't move, rescale, or re-pose anything. Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536.
@@ -233,12 +235,12 @@ Armor may stand up to 6 px off the body (pauldrons, helm crest), but no capes, w
 
 ### Parker (metallic green)
 #### Parker · Leather
-Attach `public/mannequins/fitting-parker.png` + the style sheet. Save as **parker-leather.png**.
+Attach `fitting-parker.png` **first**, then the style sheet. Save as **parker-leather.png**.
 
 ```text
-Armor fitting: Parker's Leather set. Follow the project's armor rules exactly.
+Armor fitting: Parker's Leather set. EDIT image 1 (the cyan fitting mannequin). Do NOT draw a new picture: keep its exact canvas, figure size, position and pose. Follow the project's armor rules exactly.
 
-Attached: Parker's CYAN fitting mannequin (and the style sheet).
+Image 1: Parker's CYAN fitting mannequin. Image 2: the style sheet (reference only).
 Paint a full Leather armor set directly onto the cyan mannequin: helm, pauldrons, chest, bracers/gauntlets, belt, thigh plates, greaves, boots.
 Leave every bit of body NOT covered by armor exactly flat cyan #00ffff with its #007a7a outline. Don't draw skin, face, hair or clothes. Background stays flat #ff00ff.
 Don't move, rescale, or re-pose anything. Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536.
@@ -251,12 +253,12 @@ Armor may stand up to 6 px off the body (pauldrons, helm crest), but no capes, w
 ```
 
 #### Parker · Stone
-Attach `public/mannequins/fitting-parker.png` + the style sheet. Save as **parker-stone.png**.
+Attach `fitting-parker.png` **first**, then the style sheet. Save as **parker-stone.png**.
 
 ```text
-Armor fitting: Parker's Stone set. Follow the project's armor rules exactly.
+Armor fitting: Parker's Stone set. EDIT image 1 (the cyan fitting mannequin). Do NOT draw a new picture: keep its exact canvas, figure size, position and pose. Follow the project's armor rules exactly.
 
-Attached: Parker's CYAN fitting mannequin (and the style sheet).
+Image 1: Parker's CYAN fitting mannequin. Image 2: the style sheet (reference only).
 Paint a full Stone armor set directly onto the cyan mannequin: helm, pauldrons, chest, bracers/gauntlets, belt, thigh plates, greaves, boots.
 Leave every bit of body NOT covered by armor exactly flat cyan #00ffff with its #007a7a outline. Don't draw skin, face, hair or clothes. Background stays flat #ff00ff.
 Don't move, rescale, or re-pose anything. Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536.
@@ -269,12 +271,12 @@ Armor may stand up to 6 px off the body (pauldrons, helm crest), but no capes, w
 ```
 
 #### Parker · Iron
-Attach `public/mannequins/fitting-parker.png` + the style sheet. Save as **parker-iron.png**.
+Attach `fitting-parker.png` **first**, then the style sheet. Save as **parker-iron.png**.
 
 ```text
-Armor fitting: Parker's Iron set. Follow the project's armor rules exactly.
+Armor fitting: Parker's Iron set. EDIT image 1 (the cyan fitting mannequin). Do NOT draw a new picture: keep its exact canvas, figure size, position and pose. Follow the project's armor rules exactly.
 
-Attached: Parker's CYAN fitting mannequin (and the style sheet).
+Image 1: Parker's CYAN fitting mannequin. Image 2: the style sheet (reference only).
 Paint a full Iron armor set directly onto the cyan mannequin: helm, pauldrons, chest, bracers/gauntlets, belt, thigh plates, greaves, boots.
 Leave every bit of body NOT covered by armor exactly flat cyan #00ffff with its #007a7a outline. Don't draw skin, face, hair or clothes. Background stays flat #ff00ff.
 Don't move, rescale, or re-pose anything. Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536.
@@ -287,12 +289,12 @@ Armor may stand up to 6 px off the body (pauldrons, helm crest), but no capes, w
 ```
 
 #### Parker · Gold
-Attach `public/mannequins/fitting-parker.png` + the style sheet. Save as **parker-gold.png**.
+Attach `fitting-parker.png` **first**, then the style sheet. Save as **parker-gold.png**.
 
 ```text
-Armor fitting: Parker's Gold set. Follow the project's armor rules exactly.
+Armor fitting: Parker's Gold set. EDIT image 1 (the cyan fitting mannequin). Do NOT draw a new picture: keep its exact canvas, figure size, position and pose. Follow the project's armor rules exactly.
 
-Attached: Parker's CYAN fitting mannequin (and the style sheet).
+Image 1: Parker's CYAN fitting mannequin. Image 2: the style sheet (reference only).
 Paint a full Gold armor set directly onto the cyan mannequin: helm, pauldrons, chest, bracers/gauntlets, belt, thigh plates, greaves, boots.
 Leave every bit of body NOT covered by armor exactly flat cyan #00ffff with its #007a7a outline. Don't draw skin, face, hair or clothes. Background stays flat #ff00ff.
 Don't move, rescale, or re-pose anything. Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536.
@@ -305,12 +307,12 @@ Armor may stand up to 6 px off the body (pauldrons, helm crest), but no capes, w
 ```
 
 #### Parker · Crystal
-Attach `public/mannequins/fitting-parker.png` + the style sheet. Save as **parker-crystal.png**.
+Attach `fitting-parker.png` **first**, then the style sheet. Save as **parker-crystal.png**.
 
 ```text
-Armor fitting: Parker's Crystal set. Follow the project's armor rules exactly.
+Armor fitting: Parker's Crystal set. EDIT image 1 (the cyan fitting mannequin). Do NOT draw a new picture: keep its exact canvas, figure size, position and pose. Follow the project's armor rules exactly.
 
-Attached: Parker's CYAN fitting mannequin (and the style sheet).
+Image 1: Parker's CYAN fitting mannequin. Image 2: the style sheet (reference only).
 Paint a full Crystal armor set directly onto the cyan mannequin: helm, pauldrons, chest, bracers/gauntlets, belt, thigh plates, greaves, boots.
 Leave every bit of body NOT covered by armor exactly flat cyan #00ffff with its #007a7a outline. Don't draw skin, face, hair or clothes. Background stays flat #ff00ff.
 Don't move, rescale, or re-pose anything. Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536.
@@ -323,12 +325,12 @@ Armor may stand up to 6 px off the body (pauldrons, helm crest), but no capes, w
 ```
 
 #### Parker · Obsidian
-Attach `public/mannequins/fitting-parker.png` + the style sheet. Save as **parker-obsidian.png**.
+Attach `fitting-parker.png` **first**, then the style sheet. Save as **parker-obsidian.png**.
 
 ```text
-Armor fitting: Parker's Obsidian set. Follow the project's armor rules exactly.
+Armor fitting: Parker's Obsidian set. EDIT image 1 (the cyan fitting mannequin). Do NOT draw a new picture: keep its exact canvas, figure size, position and pose. Follow the project's armor rules exactly.
 
-Attached: Parker's CYAN fitting mannequin (and the style sheet).
+Image 1: Parker's CYAN fitting mannequin. Image 2: the style sheet (reference only).
 Paint a full Obsidian armor set directly onto the cyan mannequin: helm, pauldrons, chest, bracers/gauntlets, belt, thigh plates, greaves, boots.
 Leave every bit of body NOT covered by armor exactly flat cyan #00ffff with its #007a7a outline. Don't draw skin, face, hair or clothes. Background stays flat #ff00ff.
 Don't move, rescale, or re-pose anything. Grid: 256×384 game pixels, each an exact 4×4 block → 1024×1536.

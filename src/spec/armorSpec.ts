@@ -68,9 +68,9 @@ export function fittingPrompt(person: Person, landmarks: Landmarks, accent: keyo
   const lm = Object.entries(landmarks)
     .map(([k, p]) => `${k} (${p.x}, ${p.y})`)
     .join(", ");
-  return `Armor fitting: ${person.name}'s ${tier.name} set. Follow the project's armor rules exactly.
+  return `Armor fitting: ${person.name}'s ${tier.name} set. EDIT image 1 (the cyan fitting mannequin). Do NOT draw a new picture: keep its exact canvas, figure size, position and pose. Follow the project's armor rules exactly.
 
-Attached: ${person.name}'s CYAN fitting mannequin (and the style sheet).
+Image 1: ${person.name}'s CYAN fitting mannequin. Image 2: the style sheet (reference only).
 Paint a full ${tier.name} armor set directly onto the cyan mannequin: helm, pauldrons, chest, bracers/gauntlets, belt, thigh plates, greaves, boots.
 Leave every bit of body NOT covered by armor exactly flat cyan ${FIT_BODY} with its ${FIT_LINE} outline. Don't draw skin, face, hair or clothes. Background stays flat ${KEY_BG}.
 Don't move, rescale, or re-pose anything. Grid: ${GRID_W}×${GRID_H} game pixels, each an exact ${BLOCK}×${BLOCK} block → ${IMAGE_W}×${IMAGE_H}.
