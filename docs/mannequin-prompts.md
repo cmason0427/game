@@ -77,6 +77,25 @@ background gap beside them. A glued-on arm makes the pauldrons and bracers land 
 
 ---
 
+## Custom poses
+
+Any pose works: 3/4 turn, action stance, whatever you want. **The pose you lock in is permanent.**
+Every avatar gets painted onto it and every armor set is fitted to it, so photos you upload later
+only add face, hair, tattoos and piercings. They never change the build or the pose.
+
+- **Show ChatGPT the pose.** Attach a reference: a photo of you striking it, or any pose picture.
+  Then say "use exactly this pose".
+- **For a pose that isn't straight-on,** swap the "front view" line in step 2 for:
+  `Keep exactly this pose and angle.`
+  Keep every other rule, especially the gaps: no limb crossing in front of the body, and a visible
+  gap between arms and torso wherever the pose allows.
+- **For a non-front pose, I may place some landmarks by hand.** The auto-measure is best at
+  straight-on poses. That's a one-time job at import.
+- **Changing builds later** (your once-a-year redo): new mannequin, then new armor fittings for it,
+  then avatars re-painted. Budget a couple of days for that.
+- **One pose per person to start.** Every extra pose (a victory pose, an attack pose) needs its own
+  full set of armor fittings. Attacks can be done in-game with motion instead (lunges, flashes, shakes).
+
 ## Step 3: send them to me
 
 Download the final images (the actual files, **not screenshots**) and send them named

@@ -36,10 +36,6 @@ export type Landmarks = Record<string, P>;
 export const heightPx = (p: Person) => Math.round(p.heightIn * PX_PER_INCH);
 export const feetInches = (inches: number) => `${Math.floor(inches / 12)}'${inches % 12}"`;
 
-const LOOK: Record<Build, string> = {
-  curvy: "Curvy and cute: full bust, small waist, wide hips, thick thighs, soft feminine shape, playful hip-popped pose with one hand on the hip. Keep exactly the curves the mannequin shows, even if the photo is slimmer or heavier.",
-  muscular: "Big and beefy: broad shoulders, big chest, thick arms and legs, V-taper, confident wide hero stance. Keep exactly the muscle the mannequin shows, even if the photo is leaner.",
-};
 
 /**
  * The per-person prompt for ChatGPT, sent with the person's photo(s) and their
@@ -54,7 +50,8 @@ export function avatarPrompt(person: Person, landmarks: Landmarks, notes = "") {
 Person: ${person.name}, ${feetInches(person.heightIn)} tall.
 Attached: photo(s) of ${person.name}, and ${person.name}'s mannequin template.
 
-Body and pose: ${LOOK[person.build]}
+Body and pose: LOCKED. They come only from the mannequin. Never change body shape, size, proportions, muscle, curves or pose, even if the photo shows a different build or pose.
+From the photo take ONLY: face, hair, skin tone, eye colour, facial hair, glasses, tattoos, piercings, freckles.
 Paint ${person.name} directly over the gray mannequin: same silhouette, same pose, same position, same size. Don't move, rescale, or re-pose it.
 
 Grid: ${GRID_W}×${GRID_H} game pixels, each an exact ${BLOCK}×${BLOCK} block → ${IMAGE_W}×${IMAGE_H} image.
@@ -73,7 +70,7 @@ STYLE
 - Real pixel art on an exact grid: every game pixel is a solid square block of the size given in the prompt. No anti-aliasing, no blur, no gradients, no painterly texture.
 - Detailed and flattering: clean 1-px dark outline, soft cel shading with 3–4 tone ramps per colour, highlights on hair and skin, up to 64 colours total.
 - Recognisable face: hair, facial hair, glasses, skin tone, eye colour, expression (a confident little smile).
-- The BODY SHAPE AND POSE come from the mannequin template, not the photo. The mannequin is the look the player wants. Match it exactly.
+- The BODY SHAPE AND POSE are locked to the mannequin template and never change between runs, whatever the photo shows. The photo only supplies face, hair, skin tone, eye colour, facial hair, glasses, tattoos, piercings and freckles.
 - Plain fitted base outfit (fitted tank or t-shirt, fitted shorts or leggings, simple shoes) so armour can be layered on later. No accessories that stick out.
 - Background: flat solid ${KEY_BG} everywhere outside the figure. No floor, no shadow, no text, no border.
 

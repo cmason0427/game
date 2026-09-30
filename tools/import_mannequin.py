@@ -239,7 +239,11 @@ def main(path, who):
     mask, bg = background_mask(im)
     mask = keep_big_blobs(mask)
     grid, dark = to_grid(im, mask, who)
-    lm = measure(grid)
+    try:
+        lm = measure(grid)
+    except Exception as e:  # unusual poses can defeat the auto-measure; fixes fill the gaps
+        print(f"auto-measure failed ({e!r}); put landmarks in tools/landmark-fixes.json")
+        lm = {}
     fixes_path = os.path.join(HERE, "landmark-fixes.json")
     if os.path.exists(fixes_path):
         for k, v in json.load(open(fixes_path)).get(who, {}).items():
