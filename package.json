@@ -1,0 +1,12 @@
+{
+  "name": "game",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "kit": "tsx tools/kit.mts"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}

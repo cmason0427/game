@@ -1,0 +1,124 @@
+{
+ "grid": [
+  256,
+  384
+ ],
+ "block": 4,
+ "floorY": 372,
+ "pieces": [
+  {
+   "key": "helm",
+   "from": "HEAD_TOP",
+   "to": "CHIN"
+  },
+  {
+   "key": "chest",
+   "from": "CHIN",
+   "to": "WAIST_C"
+  },
+  {
+   "key": "pauldron",
+   "from": "SHOULDER",
+   "to": "ELBOW",
+   "side": true
+  },
+  {
+   "key": "bracer",
+   "from": "ELBOW",
+   "to": "WRIST",
+   "side": true
+  },
+  {
+   "key": "belt",
+   "from": "WAIST_C",
+   "to": "HIP_C"
+  },
+  {
+   "key": "cuisse",
+   "from": "HIP",
+   "to": "KNEE",
+   "side": true
+  },
+  {
+   "key": "greave",
+   "from": "KNEE",
+   "to": "ANKLE",
+   "side": true
+  },
+  {
+   "key": "boot",
+   "from": "ANKLE",
+   "to": "FLOOR",
+   "side": true
+  }
+ ],
+ "tiers": [
+  "leather",
+  "stone",
+  "iron",
+  "gold",
+  "crystal",
+  "obsidian"
+ ],
+ "sheets": [
+  {
+   "key": "gear-charlie",
+   "title": "Charlie's shields & weapons",
+   "cols": 4,
+   "forWho": "charlie",
+   "items": [
+    "round buckler",
+    "heart shield",
+    "kite shield",
+    "tower shield",
+    "short sword",
+    "magic wand",
+    "crossbow",
+    "war fan",
+    "heart staff",
+    "twin daggers",
+    "spear",
+    "legendary rose blade"
+   ]
+  },
+  {
+   "key": "gear-parker",
+   "title": "Parker's shields & weapons",
+   "cols": 4,
+   "forWho": "parker",
+   "items": [
+    "round shield",
+    "kite shield",
+    "spiked shield",
+    "tower shield",
+    "broadsword",
+    "battle axe",
+    "warhammer",
+    "greatsword",
+    "mace",
+    "flail",
+    "halberd",
+    "legendary emerald greatsword"
+   ]
+  },
+  {
+   "key": "loot",
+   "title": "Loot & UI",
+   "cols": 4,
+   "items": [
+    "gold coin",
+    "stack of coins",
+    "XP gem",
+    "health potion",
+    "stamina potion",
+    "protein shake potion",
+    "treasure chest (closed)",
+    "treasure chest (open)",
+    "trophy",
+    "PR star medal",
+    "map pin",
+    "heart"
+   ]
+  }
+ ]
+}
