@@ -55,7 +55,7 @@ export const PIECES: { key: string; from: string; to: string; side?: boolean }[]
   { key: "boot", from: "ANKLE", to: "FLOOR", side: true },
 ];
 
-const LOOK: Record<string, string> = {
+export const ARMOR_LOOK: Record<string, string> = {
   curvy:
     "Cute, feminine and flattering: form-fitting and shaped to her curves, fantasy-RPG style that shows some skin (bare midriff, open shoulders and upper thighs between plates), sculpted bust plate, cinched waist, hip plates that follow her hips, heart and rose details. Cute and confident, not bulky.",
   muscular:
@@ -78,7 +78,7 @@ Landmarks (game pixels; _L/_R = ${person.name}'s own left/right, their left is o
 
 Material: ${tier.material}. Main colour ramp (light→dark): ${tier.ramp.join(" ")}.
 Accent trims, rivets, edges and emblems in ${a.name}: ${a.ramp.join(" ")}.
-Style: ${LOOK[person.build]}
+Style: ${ARMOR_LOOK[person.build]}
 Armor may stand up to 6 px off the body (pauldrons, helm crest), but no capes, weapons or shields, and nothing that crosses between pieces.`;
 }
 
